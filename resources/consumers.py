@@ -5,6 +5,7 @@ import threading
 import time
 import queue
 import re
+import socket
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
 from .models import ServerResource
@@ -154,27 +155,32 @@ class SSHTerminalConsumer(AsyncWebsocketConsumer):
             await self.send_error(f"消息处理失败: {str(e)}")
     
     def _clean_ansi_sequences(self, text):
-        """清理ANSI转义序列"""
-        # 移除ANSI转义序列
-        ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
-        cleaned = ansi_escape.sub('', text)
-        
-        # 移除其他控制字符
-        cleaned = re.sub(r'\x1b\]0;[^\x07]*\x07', '', cleaned)  # 移除窗口标题设置
-        cleaned = re.sub(r'\x1b\[\?2004[hl]', '', cleaned)      # 移除bracketed paste mode
-        
-        return cleaned
+        """处理ANSI转义序列 - 保留原始输出让前端处理"""
+        # 不再删除ANSI序列，而是保留原始输出
+        # 前端将负责正确解析和渲染这些序列
+        return text
     
     def _send_input(self, input_data):
-        """发送字符级输入到SSH通道"""
+        """发送用户输入到SSH"""
         try:
             if self.ssh_channel and not self.ssh_channel.closed:
+                # 检查SSH连接状态
+                if not self.ssh_client or not self.ssh_client.get_transport() or not self.ssh_client.get_transport().is_active():
+                    logger.error("SSH连接已断开，无法发送输入")
+                    return
+                
                 logger.info(f"发送输入: {repr(input_data)}")
                 self.ssh_channel.send(input_data)
             else:
-                logger.error("SSH通道不可用")
+                logger.error("SSH通道不可用，无法发送输入")
         except Exception as e:
-            logger.error(f"发送输入失败: {str(e)}")
+            logger.error(f"发送输入失败: {str(e)} (类型: {type(e).__name__})")
+            # 检查连接状态
+            if self.ssh_client and self.ssh_client.get_transport():
+                logger.error(f"SSH传输状态: active={self.ssh_client.get_transport().is_active()}")
+            if self.ssh_channel:
+                logger.error(f"SSH通道状态: active={self.ssh_channel.active}, closed={self.ssh_channel.closed}")
+            # 不要在这里发送错误消息到WebSocket，避免循环
     
     def _send_key(self, key_data):
         """发送特殊按键到SSH通道"""
@@ -222,6 +228,7 @@ class SSHTerminalConsumer(AsyncWebsocketConsumer):
                 logger.error("SSH通道不可用")
         except Exception as e:
             logger.error(f"发送按键失败: {str(e)}")
+            # 不要在这里发送错误消息到WebSocket，避免循环
 
     def _send_command(self, command):
         """在线程中发送命令（兼容旧模式）"""
@@ -237,6 +244,7 @@ class SSHTerminalConsumer(AsyncWebsocketConsumer):
                 logger.error("SSH通道不可用")
         except Exception as e:
             logger.error(f"发送命令失败: {str(e)}")
+            # 不要在这里发送错误消息到WebSocket，避免循环
     
     @database_sync_to_async
     def get_server(self, server_id):
@@ -424,90 +432,83 @@ class SSHTerminalConsumer(AsyncWebsocketConsumer):
             logger.error(f"发送初始命令失败: {str(e)}")
     
     def _read_ssh_output(self):
-        """在单独线程中读取SSH输出"""
-        buffer = ""
-        try:
-            while self.ssh_channel and not self.ssh_channel.closed:
-                try:
-                    # 检查SSH连接状态
-                    if not self.ssh_client or not self.ssh_client.get_transport() or not self.ssh_client.get_transport().is_active():
-                        logger.error("SSH连接已断开，尝试重连")
-                        # 尝试重新连接
-                        try:
-                            asyncio.create_task(self.establish_ssh_connection())
-                        except:
-                            pass
-                        break
-                    
-                    # 设置较短的超时以保持响应性
-                    self.ssh_channel.settimeout(0.5)
-                    data = self.ssh_channel.recv(4096).decode('utf-8', errors='ignore')
-                    
-                    if data:
-                        logger.info(f"收到SSH输出: {repr(data[:200])}")  # 只显示前200字符
-                        buffer += data
-                        
-                        # 处理完整的行
-                        while '\n' in buffer or '\r' in buffer:
-                            if '\r\n' in buffer:
-                                line, buffer = buffer.split('\r\n', 1)
-                                line += '\r\n'
-                            elif '\n' in buffer:
-                                line, buffer = buffer.split('\n', 1)
-                                line += '\n'
-                            elif '\r' in buffer:
-                                line, buffer = buffer.split('\r', 1)
-                                line += '\r'
-                            else:
-                                break
-                            
-                            if line.strip():
-                                logger.info(f"收到SSH输出: {repr(line)}")
-                            
-                            # 将输出放入队列
-                            self.output_queue.put(('output', line))
-                        
-                        # 如果有剩余数据但没有换行符，也发送出去
-                        if buffer and len(buffer) > 100:  # 避免缓冲区过大
-                            self.output_queue.put(('output', buffer))
-                            buffer = ""
-                    
-                    # 检查stderr输出
-                    if hasattr(self.ssh_channel, 'recv_stderr_ready') and self.ssh_channel.recv_stderr_ready():
-                        stderr_data = self.ssh_channel.recv_stderr(4096).decode('utf-8', errors='ignore')
-                        if stderr_data:
-                            logger.info(f"收到SSH错误输出: {repr(stderr_data)}")
-                            self.output_queue.put(('error', stderr_data))
-                    
-                except Exception as e:
-                    error_msg = str(e).lower()
-                    if "timed out" in error_msg or "timeout" in error_msg:
-                        # 超时是正常的，继续循环
-                        continue
-                    elif "socket is closed" in error_msg or "channel closed" in error_msg:
-                        logger.info("SSH通道已关闭")
-                        break
-                    elif "connection lost" in error_msg or "broken pipe" in error_msg:
-                        logger.error("SSH连接丢失，尝试重连")
-                        # 尝试重新连接
-                        try:
-                            asyncio.create_task(self.establish_ssh_connection())
-                        except:
-                            pass
-                        break
-                    else:
-                        logger.error(f"读取SSH输出时出错: {str(e)}")
-                        break
-                     
-            # 处理剩余的buffer
-            if buffer.strip():
-                logger.info(f"剩余buffer输出: {repr(buffer[:100])}")
-                self.output_queue.put(('output', buffer))
+        """读取SSH输出的线程函数"""
+        logger.info("SSH输出读取线程开始")
+        consecutive_errors = 0
+        max_consecutive_errors = 20  # 增加到20次
+        buffer = b''
+        
+        while self.ssh_channel and not self.ssh_channel.closed:
+            try:
+                # 检查通道是否有数据可读
+                if not self.ssh_channel.recv_ready():
+                    time.sleep(0.1)  # 短暂等待
+                    continue
                 
-        except Exception as e:
-            logger.error(f"SSH输出读取线程异常: {str(e)}")
-        finally:
-            logger.info("SSH输出读取线程结束")
+                # 设置较长的超时时间
+                self.ssh_channel.settimeout(2.0)  # 增加到2秒
+                
+                # 尝试接收数据
+                data = self.ssh_channel.recv(4096)
+                
+                if data:
+                    buffer += data
+                    consecutive_errors = 0  # 重置错误计数
+                    
+                    # 处理缓冲区中的数据
+                    while b'\n' in buffer or len(buffer) > 1024:
+                        if b'\n' in buffer:
+                            line, buffer = buffer.split(b'\n', 1)
+                            line += b'\n'
+                        else:
+                            line = buffer
+                            buffer = b''
+                        
+                        try:
+                            decoded_line = line.decode('utf-8', errors='replace')
+                            logger.info(f"SSH输出: '{decoded_line.strip()}'")
+                            self.output_queue.put(('output', decoded_line))
+                        except Exception as e:
+                            logger.error(f"解码SSH输出时出错: {e}")
+                            self.output_queue.put(('error', f"输出解码错误: {e}"))
+                else:
+                    # 没有数据，可能连接已关闭
+                    time.sleep(0.1)
+                    
+            except socket.timeout:
+                consecutive_errors += 1
+                if consecutive_errors <= max_consecutive_errors:
+                    logger.debug(f"SSH读取超时 (连续错误: {consecutive_errors})")
+                else:
+                    logger.error(f"连续超时错误过多({consecutive_errors})，停止读取SSH输出")
+                    break
+                    
+            except Exception as e:
+                consecutive_errors += 1
+                logger.error(f"读取SSH输出时出错: {e} (类型: {type(e).__name__}) (连续错误: {consecutive_errors})")
+                
+                # 检查SSH连接状态
+                if self.ssh_transport:
+                    logger.error(f"SSH传输状态: active={self.ssh_transport.is_active()}")
+                if self.ssh_channel:
+                    logger.error(f"SSH通道状态: active={self.ssh_channel.active}, closed={self.ssh_channel.closed}")
+                
+                if consecutive_errors >= max_consecutive_errors:
+                    logger.error(f"连续错误过多({consecutive_errors})，停止读取SSH输出")
+                    break
+                    
+                time.sleep(0.1)
+        
+        # 处理剩余的缓冲区数据
+        if buffer:
+            try:
+                decoded_buffer = buffer.decode('utf-8', errors='replace')
+                logger.info(f"SSH输出(剩余): '{decoded_buffer.strip()}'")
+                self.output_queue.put(('output', decoded_buffer))
+            except Exception as e:
+                logger.error(f"解码剩余SSH输出时出错: {e}")
+        
+        logger.info("SSH输出读取线程结束")
     
     async def send_message(self, message):
         """发送普通消息"""

@@ -56,6 +56,7 @@ class MockSSHServer:
     
     def handle_client(self, client_socket, addr):
         """处理客户端连接"""
+        transport = None
         try:
             # 创建SSH传输层
             transport = paramiko.Transport(client_socket)
@@ -79,10 +80,18 @@ class MockSSHServer:
             # 处理shell会话
             self.handle_shell(channel, addr)
             
+        except socket.error as e:
+            print(f"Socket exception: {e}")
+        except paramiko.SSHException as e:
+            print(f"SSH exception: {e}")
         except Exception as e:
             print(f"处理客户端 {addr} 时出错: {e}")
+            import traceback
+            traceback.print_exc()
         finally:
             try:
+                if transport:
+                    transport.close()
                 client_socket.close()
             except:
                 pass
