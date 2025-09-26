@@ -1,0 +1,53 @@
+{
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "success_rate": 100.0,
+    "timestamp": "2025-09-25T16:10:04.949935"
+  },
+  "results": [
+    {
+      "test": "前端服务访问",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "React应用正常运行",
+      "timestamp": "2025-09-25T16:09:59.735248"
+    },
+    {
+      "test": "后端服务访问",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "Django API正常运行 (状态码: 405)",
+      "timestamp": "2025-09-25T16:10:00.742713"
+    },
+    {
+      "test": "用户认证",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "成功登录用户: admin",
+      "timestamp": "2025-09-25T16:10:01.828546"
+    },
+    {
+      "test": "获取服务器列表",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "当前服务器数量: 2",
+      "timestamp": "2025-09-25T16:10:02.870719"
+    },
+    {
+      "test": "创建服务器资源",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "成功创建服务器 ID: None",
+      "timestamp": "2025-09-25T16:10:02.900863"
+    },
+    {
+      "test": "数据库持久化",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "测试数据成功保存到数据库",
+      "timestamp": "2025-09-25T16:10:03.944399"
+    }
+  ]
+}

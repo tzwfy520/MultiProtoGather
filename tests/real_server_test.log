@@ -1,0 +1,20 @@
+2025-09-26 12:02:07,875 - INFO - 开始真实SSH服务器WebSocket终端测试...
+2025-09-26 12:02:08,035 - INFO - 登录成功，获取到JWT token
+2025-09-26 12:02:08,060 - INFO - 找到目标服务器: huoshan-1-updated (ID: 13)
+2025-09-26 12:02:08,060 - INFO - 服务器详情: 115.190.80.219:22
+2025-09-26 12:02:08,060 - INFO - 尝试连接WebSocket: ws://localhost:8000/ws/terminal/13/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU4OTQ1NzI4LCJpYXQiOjE3NTg4NTkzMjgsImp0aSI6IjllMTMwMDdhYjk3NzQ0NGI5Mjk5ODk1NjZhYzhhMzk4IiwidXNlcl9pZCI6MX0.4zUNwxLADZw2rWZMbXKNmEWle-3FdHuFluOBqLPu6Jw
+2025-09-26 12:02:08,082 - INFO - WebSocket连接成功！
+2025-09-26 12:02:08,091 - INFO - 收到消息 [message]: {'type': 'message', 'data': '正在连接到 huoshan-1-updated (115.190.80.219)...'}
+2025-09-26 12:02:08,877 - INFO - 收到消息 [message]: {'type': 'message', 'data': 'SSH连接已建立，正在初始化终端...'}
+2025-09-26 12:02:10,790 - INFO - 收到消息 [message]: {'type': 'message', 'data': '终端已就绪，可以开始输入命令'}
+2025-09-26 12:02:11,082 - INFO - 执行测试命令 1/6: whoami
+2025-09-26 12:02:13,086 - INFO - 执行测试命令 2/6: pwd
+2025-09-26 12:02:15,090 - INFO - 执行测试命令 3/6: echo 'Hello from WebSocket Terminal!'
+2025-09-26 12:02:17,095 - INFO - 执行测试命令 4/6: date
+2025-09-26 12:02:19,096 - INFO - 执行测试命令 5/6: uname -a
+2025-09-26 12:02:21,099 - INFO - 执行测试命令 6/6: ls -la
+2025-09-26 12:02:23,101 - INFO - 测试终端调整大小...
+2025-09-26 12:02:29,104 - INFO - WebSocket测试完成！
+2025-09-26 12:02:29,106 - INFO - 消息接收任务已取消
+2025-09-26 12:02:29,107 - INFO - 真实SSH服务器WebSocket终端测试成功！
+2025-09-26 12:02:29,108 - INFO - 所有测试通过！

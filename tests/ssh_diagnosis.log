@@ -1,0 +1,175 @@
+2025-09-26 12:00:20,913 - INFO - 开始SSH连接完整诊断
+2025-09-26 12:00:20,913 - INFO - 目标服务器: 115.190.80.219:22
+2025-09-26 12:00:20,913 - INFO - 用户名: Eccom123
+2025-09-26 12:00:20,913 - INFO - ============================================================
+2025-09-26 12:00:20,913 - INFO - === 网络连通性测试 ===
+2025-09-26 12:00:20,959 - INFO - ✅ TCP连接到 115.190.80.219:22 成功
+2025-09-26 12:00:20,960 - INFO - === SSH Banner测试 ===
+2025-09-26 12:00:21,054 - INFO - ✅ SSH Banner: SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.11
+2025-09-26 12:00:21,054 - INFO - === 基础SSH连接测试 ===
+2025-09-26 12:00:21,054 - INFO - 尝试连接到 115.190.80.219:22
+2025-09-26 12:00:21,054 - INFO - 用户名: Eccom123
+2025-09-26 12:00:21,096 - DEBUG - starting thread (client mode): 0x1f12770
+2025-09-26 12:00:21,097 - DEBUG - Local version/idstring: SSH-2.0-paramiko_3.3.1
+2025-09-26 12:00:21,145 - DEBUG - Remote version/idstring: SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.11
+2025-09-26 12:00:21,145 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2025-09-26 12:00:21,185 - DEBUG - === Key exchange possibilities ===
+2025-09-26 12:00:21,185 - DEBUG - kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, sntrup761x25519-sha512@openssh.com, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, kex-strict-s-v00@openssh.com
+2025-09-26 12:00:21,185 - DEBUG - server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-09-26 12:00:21,185 - DEBUG - client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-09-26 12:00:21,185 - DEBUG - server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-09-26 12:00:21,185 - DEBUG - client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-09-26 12:00:21,185 - DEBUG - server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-09-26 12:00:21,185 - DEBUG - client compress: none, zlib@openssh.com
+2025-09-26 12:00:21,185 - DEBUG - server compress: none, zlib@openssh.com
+2025-09-26 12:00:21,185 - DEBUG - client lang: <none>
+2025-09-26 12:00:21,185 - DEBUG - server lang: <none>
+2025-09-26 12:00:21,185 - DEBUG - kex follows: False
+2025-09-26 12:00:21,185 - DEBUG - === Key exchange agreements ===
+2025-09-26 12:00:21,185 - DEBUG - Kex: curve25519-sha256@libssh.org
+2025-09-26 12:00:21,185 - DEBUG - HostKey: ssh-ed25519
+2025-09-26 12:00:21,185 - DEBUG - Cipher: aes128-ctr
+2025-09-26 12:00:21,185 - DEBUG - MAC: hmac-sha2-256
+2025-09-26 12:00:21,185 - DEBUG - Compression: none
+2025-09-26 12:00:21,186 - DEBUG - === End of kex handshake ===
+2025-09-26 12:00:21,282 - DEBUG - kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-09-26 12:00:21,282 - DEBUG - Switch to new keys ...
+2025-09-26 12:00:21,282 - DEBUG - Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,sk-ssh-ed25519@openssh.com,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com,webauthn-sk-ecdsa-sha2-nistp256@openssh.com', 'publickey-hostbound@openssh.com': b'0'}
+2025-09-26 12:00:21,284 - DEBUG - Adding ssh-ed25519 host key for 115.190.80.219: b'b91eba0d254af123c1fd381fec6ea575'
+2025-09-26 12:00:21,410 - DEBUG - userauth is OK
+2025-09-26 12:00:23,466 - INFO - Authentication (password) failed.
+2025-09-26 12:00:23,466 - ERROR - ❌ SSH认证失败: Authentication failed.
+2025-09-26 12:00:23,466 - INFO - === 交互式Shell测试 ===
+2025-09-26 12:00:23,510 - DEBUG - starting thread (client mode): 0x1f50370
+2025-09-26 12:00:23,511 - DEBUG - Local version/idstring: SSH-2.0-paramiko_3.3.1
+2025-09-26 12:00:23,566 - DEBUG - Remote version/idstring: SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.11
+2025-09-26 12:00:23,566 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2025-09-26 12:00:23,609 - DEBUG - === Key exchange possibilities ===
+2025-09-26 12:00:23,609 - DEBUG - kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, sntrup761x25519-sha512@openssh.com, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, kex-strict-s-v00@openssh.com
+2025-09-26 12:00:23,609 - DEBUG - server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-09-26 12:00:23,609 - DEBUG - client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-09-26 12:00:23,609 - DEBUG - server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-09-26 12:00:23,609 - DEBUG - client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-09-26 12:00:23,610 - DEBUG - server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-09-26 12:00:23,610 - DEBUG - client compress: none, zlib@openssh.com
+2025-09-26 12:00:23,610 - DEBUG - server compress: none, zlib@openssh.com
+2025-09-26 12:00:23,610 - DEBUG - client lang: <none>
+2025-09-26 12:00:23,610 - DEBUG - server lang: <none>
+2025-09-26 12:00:23,610 - DEBUG - kex follows: False
+2025-09-26 12:00:23,610 - DEBUG - === Key exchange agreements ===
+2025-09-26 12:00:23,610 - DEBUG - Kex: curve25519-sha256@libssh.org
+2025-09-26 12:00:23,610 - DEBUG - HostKey: ssh-ed25519
+2025-09-26 12:00:23,610 - DEBUG - Cipher: aes128-ctr
+2025-09-26 12:00:23,610 - DEBUG - MAC: hmac-sha2-256
+2025-09-26 12:00:23,611 - DEBUG - Compression: none
+2025-09-26 12:00:23,611 - DEBUG - === End of kex handshake ===
+2025-09-26 12:00:23,696 - DEBUG - kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-09-26 12:00:23,696 - DEBUG - Switch to new keys ...
+2025-09-26 12:00:23,697 - DEBUG - Adding ssh-ed25519 host key for 115.190.80.219: b'b91eba0d254af123c1fd381fec6ea575'
+2025-09-26 12:00:23,697 - DEBUG - Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,sk-ssh-ed25519@openssh.com,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com,webauthn-sk-ecdsa-sha2-nistp256@openssh.com', 'publickey-hostbound@openssh.com': b'0'}
+2025-09-26 12:00:23,823 - DEBUG - userauth is OK
+2025-09-26 12:00:25,871 - INFO - Authentication (password) failed.
+2025-09-26 12:00:25,871 - ERROR - ❌ 交互式Shell测试失败: Authentication failed.
+2025-09-26 12:00:25,872 - INFO - === 不同参数连接测试 ===
+2025-09-26 12:00:25,872 - INFO - --- 测试配置 1: {'timeout': 30, 'banner_timeout': 30, 'auth_timeout': 30} ---
+2025-09-26 12:00:25,915 - DEBUG - starting thread (client mode): 0x1f511b0
+2025-09-26 12:00:25,915 - DEBUG - Local version/idstring: SSH-2.0-paramiko_3.3.1
+2025-09-26 12:00:25,966 - DEBUG - Remote version/idstring: SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.11
+2025-09-26 12:00:25,966 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2025-09-26 12:00:26,006 - DEBUG - === Key exchange possibilities ===
+2025-09-26 12:00:26,007 - DEBUG - kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, sntrup761x25519-sha512@openssh.com, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, kex-strict-s-v00@openssh.com
+2025-09-26 12:00:26,007 - DEBUG - server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-09-26 12:00:26,007 - DEBUG - client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-09-26 12:00:26,007 - DEBUG - server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-09-26 12:00:26,007 - DEBUG - client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-09-26 12:00:26,007 - DEBUG - server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-09-26 12:00:26,007 - DEBUG - client compress: none, zlib@openssh.com
+2025-09-26 12:00:26,007 - DEBUG - server compress: none, zlib@openssh.com
+2025-09-26 12:00:26,008 - DEBUG - client lang: <none>
+2025-09-26 12:00:26,008 - DEBUG - server lang: <none>
+2025-09-26 12:00:26,008 - DEBUG - kex follows: False
+2025-09-26 12:00:26,008 - DEBUG - === Key exchange agreements ===
+2025-09-26 12:00:26,008 - DEBUG - Kex: curve25519-sha256@libssh.org
+2025-09-26 12:00:26,008 - DEBUG - HostKey: ssh-ed25519
+2025-09-26 12:00:26,008 - DEBUG - Cipher: aes128-ctr
+2025-09-26 12:00:26,008 - DEBUG - MAC: hmac-sha2-256
+2025-09-26 12:00:26,008 - DEBUG - Compression: none
+2025-09-26 12:00:26,008 - DEBUG - === End of kex handshake ===
+2025-09-26 12:00:26,097 - DEBUG - kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-09-26 12:00:26,097 - DEBUG - Switch to new keys ...
+2025-09-26 12:00:26,098 - DEBUG - Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,sk-ssh-ed25519@openssh.com,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com,webauthn-sk-ecdsa-sha2-nistp256@openssh.com', 'publickey-hostbound@openssh.com': b'0'}
+2025-09-26 12:00:26,098 - DEBUG - Adding ssh-ed25519 host key for 115.190.80.219: b'b91eba0d254af123c1fd381fec6ea575'
+2025-09-26 12:00:26,219 - DEBUG - userauth is OK
+2025-09-26 12:00:28,262 - INFO - Authentication (password) failed.
+2025-09-26 12:00:28,263 - ERROR - ❌ 配置 1 连接失败: Authentication failed.
+2025-09-26 12:00:28,263 - INFO - --- 测试配置 2: {'timeout': 60, 'banner_timeout': 60, 'auth_timeout': 60} ---
+2025-09-26 12:00:28,303 - DEBUG - starting thread (client mode): 0x1f51fc0
+2025-09-26 12:00:28,304 - DEBUG - Local version/idstring: SSH-2.0-paramiko_3.3.1
+2025-09-26 12:00:28,350 - DEBUG - Remote version/idstring: SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.11
+2025-09-26 12:00:28,350 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2025-09-26 12:00:28,413 - DEBUG - === Key exchange possibilities ===
+2025-09-26 12:00:28,414 - DEBUG - kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, sntrup761x25519-sha512@openssh.com, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, kex-strict-s-v00@openssh.com
+2025-09-26 12:00:28,414 - DEBUG - server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-09-26 12:00:28,414 - DEBUG - client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-09-26 12:00:28,414 - DEBUG - server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-09-26 12:00:28,414 - DEBUG - client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-09-26 12:00:28,414 - DEBUG - server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-09-26 12:00:28,414 - DEBUG - client compress: none, zlib@openssh.com
+2025-09-26 12:00:28,414 - DEBUG - server compress: none, zlib@openssh.com
+2025-09-26 12:00:28,414 - DEBUG - client lang: <none>
+2025-09-26 12:00:28,414 - DEBUG - server lang: <none>
+2025-09-26 12:00:28,414 - DEBUG - kex follows: False
+2025-09-26 12:00:28,414 - DEBUG - === Key exchange agreements ===
+2025-09-26 12:00:28,414 - DEBUG - Kex: curve25519-sha256@libssh.org
+2025-09-26 12:00:28,414 - DEBUG - HostKey: ssh-ed25519
+2025-09-26 12:00:28,414 - DEBUG - Cipher: aes128-ctr
+2025-09-26 12:00:28,414 - DEBUG - MAC: hmac-sha2-256
+2025-09-26 12:00:28,414 - DEBUG - Compression: none
+2025-09-26 12:00:28,415 - DEBUG - === End of kex handshake ===
+2025-09-26 12:00:28,488 - DEBUG - kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-09-26 12:00:28,488 - DEBUG - Switch to new keys ...
+2025-09-26 12:00:28,488 - DEBUG - Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,sk-ssh-ed25519@openssh.com,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com,webauthn-sk-ecdsa-sha2-nistp256@openssh.com', 'publickey-hostbound@openssh.com': b'0'}
+2025-09-26 12:00:28,488 - DEBUG - Adding ssh-ed25519 host key for 115.190.80.219: b'b91eba0d254af123c1fd381fec6ea575'
+2025-09-26 12:00:28,615 - DEBUG - userauth is OK
+2025-09-26 12:00:30,655 - INFO - Authentication (password) failed.
+2025-09-26 12:00:30,655 - ERROR - ❌ 配置 2 连接失败: Authentication failed.
+2025-09-26 12:00:30,655 - INFO - --- 测试配置 3: {'timeout': 10, 'banner_timeout': 15, 'auth_timeout': 10} ---
+2025-09-26 12:00:30,699 - DEBUG - starting thread (client mode): 0x1f510f0
+2025-09-26 12:00:30,699 - DEBUG - Local version/idstring: SSH-2.0-paramiko_3.3.1
+2025-09-26 12:00:30,754 - DEBUG - Remote version/idstring: SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.11
+2025-09-26 12:00:30,754 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2025-09-26 12:00:30,797 - DEBUG - === Key exchange possibilities ===
+2025-09-26 12:00:30,797 - DEBUG - kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, sntrup761x25519-sha512@openssh.com, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, kex-strict-s-v00@openssh.com
+2025-09-26 12:00:30,797 - DEBUG - server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-09-26 12:00:30,797 - DEBUG - client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-09-26 12:00:30,797 - DEBUG - server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-09-26 12:00:30,797 - DEBUG - client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-09-26 12:00:30,797 - DEBUG - server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-09-26 12:00:30,797 - DEBUG - client compress: none, zlib@openssh.com
+2025-09-26 12:00:30,797 - DEBUG - server compress: none, zlib@openssh.com
+2025-09-26 12:00:30,797 - DEBUG - client lang: <none>
+2025-09-26 12:00:30,797 - DEBUG - server lang: <none>
+2025-09-26 12:00:30,797 - DEBUG - kex follows: False
+2025-09-26 12:00:30,797 - DEBUG - === Key exchange agreements ===
+2025-09-26 12:00:30,797 - DEBUG - Kex: curve25519-sha256@libssh.org
+2025-09-26 12:00:30,797 - DEBUG - HostKey: ssh-ed25519
+2025-09-26 12:00:30,797 - DEBUG - Cipher: aes128-ctr
+2025-09-26 12:00:30,797 - DEBUG - MAC: hmac-sha2-256
+2025-09-26 12:00:30,797 - DEBUG - Compression: none
+2025-09-26 12:00:30,797 - DEBUG - === End of kex handshake ===
+2025-09-26 12:00:30,886 - DEBUG - kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-09-26 12:00:30,887 - DEBUG - Switch to new keys ...
+2025-09-26 12:00:30,887 - DEBUG - Adding ssh-ed25519 host key for 115.190.80.219: b'b91eba0d254af123c1fd381fec6ea575'
+2025-09-26 12:00:30,887 - DEBUG - Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,sk-ssh-ed25519@openssh.com,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com,webauthn-sk-ecdsa-sha2-nistp256@openssh.com', 'publickey-hostbound@openssh.com': b'0'}
+2025-09-26 12:00:31,018 - DEBUG - userauth is OK
+2025-09-26 12:00:33,081 - INFO - Authentication (password) failed.
+2025-09-26 12:00:33,081 - ERROR - ❌ 配置 3 连接失败: Authentication failed.
+2025-09-26 12:00:33,082 - INFO - ============================================================
+2025-09-26 12:00:33,082 - INFO - 诊断结果总结:
+2025-09-26 12:00:33,082 - INFO - network: ✅ 通过
+2025-09-26 12:00:33,082 - INFO - banner: ✅ 通过
+2025-09-26 12:00:33,082 - INFO - basic_ssh: ❌ 失败
+2025-09-26 12:00:33,082 - INFO - interactive_shell: ❌ 失败
+2025-09-26 12:00:33,082 - INFO - different_params: ❌ 失败
+2025-09-26 12:00:33,082 - INFO - 总体结果: 2/5 项测试通过
+2025-09-26 12:00:33,082 - INFO - 🔧 网络连接正常，但SSH连接有问题，需要检查认证或配置

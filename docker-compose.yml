@@ -1,0 +1,168 @@
+version: '3.8'
+
+services:
+  # PostgreSQL数据库
+  db:
+    image: postgres:15-alpine
+    container_name: multiprotgather-db
+    environment:
+      POSTGRES_DB: multiprotgather
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - multiprotgather-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis缓存
+  redis:
+    image: redis:7-alpine
+    container_name: multiprotgather-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - multiprotgather-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 后端API服务
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: multiprotgather-backend
+    environment:
+      - DEBUG=False
+      - DATABASE_URL=postgresql://postgres:postgres123@db:5432/multiprotgather
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=your-secret-key-here-change-in-production
+      - ALLOWED_HOSTS=localhost,127.0.0.1,backend,frontend
+      - CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:80
+    volumes:
+      - ./logs:/app/logs
+      - ./media:/app/media
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - multiprotgather-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 前端Web服务
+  frontend:
+    build:
+      context: ./multiprotgather-frontend
+      dockerfile: Dockerfile
+    container_name: multiprotgather-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - multiprotgather-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Celery Worker (异步任务处理)
+  celery-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: multiprotgather-celery-worker
+    command: celery -A multiprotgather worker -l info
+    environment:
+      - DEBUG=False
+      - DATABASE_URL=postgresql://postgres:postgres123@db:5432/multiprotgather
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=your-secret-key-here-change-in-production
+    volumes:
+      - ./logs:/app/logs
+      - ./media:/app/media
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - multiprotgather-network
+    restart: unless-stopped
+
+  # Celery Beat (定时任务调度)
+  celery-beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: multiprotgather-celery-beat
+    command: celery -A multiprotgather beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    environment:
+      - DEBUG=False
+      - DATABASE_URL=postgresql://postgres:postgres123@db:5432/multiprotgather
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=your-secret-key-here-change-in-production
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - multiprotgather-network
+    restart: unless-stopped
+
+  # Flower (Celery监控)
+  flower:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: multiprotgather-flower
+    command: celery -A multiprotgather flower --port=5555
+    environment:
+      - DEBUG=False
+      - DATABASE_URL=postgresql://postgres:postgres123@db:5432/multiprotgather
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=your-secret-key-here-change-in-production
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+    networks:
+      - multiprotgather-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  multiprotgather-network:
+    driver: bridge
