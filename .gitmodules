@@ -1,0 +1,6 @@
+[submodule "collector-projects/SSHCollector"]
+	path = collector-projects/SSHCollector
+	url = https://github.com/tzwfy520/MultiProtCollector-SSH
+[submodule "collector-projects/SSHCollectorPro"]
+	path = collector-projects/SSHCollectorPro
+	url = https://github.com/tzwfy520/MultiProtCollector-SSHPro
