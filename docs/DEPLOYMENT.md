@@ -95,7 +95,7 @@ tar -xzf v1.0.0.tar.gz --strip-components=1
 
 ```bash
 # 复制环境配置模板
-cp .env.example .env
+cp deploy/.env.example .env
 
 # 编辑配置文件
 vim .env
@@ -268,7 +268,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./deploy/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./backups:/backups
     networks:
       - multiprotgather-network
@@ -297,7 +297,7 @@ services:
   backend:
     build:
       context: ./multiprotgather-backend
-      dockerfile: Dockerfile
+      dockerfile: ../deploy/Dockerfile
     container_name: multiprotgather-backend
     env_file: .env
     volumes:
@@ -338,7 +338,7 @@ services:
   celery-worker:
     build:
       context: ./multiprotgather-backend
-      dockerfile: Dockerfile
+      dockerfile: ../deploy/Dockerfile
     container_name: multiprotgather-celery-worker
     command: celery -A multiprotgather worker -l info --concurrency=4
     env_file: .env
@@ -357,7 +357,7 @@ services:
   celery-beat:
     build:
       context: ./multiprotgather-backend
-      dockerfile: Dockerfile
+      dockerfile: ../deploy/Dockerfile
     container_name: multiprotgather-celery-beat
     command: celery -A multiprotgather beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
     env_file: .env

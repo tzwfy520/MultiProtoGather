@@ -91,7 +91,7 @@ docker-compose exec backend python manage.py collectstatic --noinput
 cd multiprotgather-backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r deploy/requirements.txt
 ```
 
 2. **数据库配置**
@@ -101,7 +101,7 @@ pip install -r requirements.txt
 createdb multiprotgather
 
 # 配置环境变量
-cp .env.example .env
+cp deploy/.env.example .env
 # 编辑 .env 文件
 ```
 
@@ -145,15 +145,21 @@ npm run build
 
 ```
 MultiProtGather/
+├── deploy/                      # 部署相关文件
+│   ├── .env.example            # 环境变量模板
+│   ├── docker-compose.yml      # Docker编排配置
+│   ├── docker-compose.simple.yml # 简化版Docker配置
+│   ├── Dockerfile              # Docker镜像配置
+│   ├── init.sql               # 数据库初始化脚本
+│   ├── requirements.txt        # Python依赖
+│   └── run_local.py           # 本地运行脚本
 ├── multiprotgather-backend/     # Django 后端
 │   ├── apps/                    # 应用模块
 │   │   ├── devices/            # 设备管理
 │   │   ├── tasks/              # 任务管理
 │   │   ├── collectors/         # 数据采集器
 │   │   └── results/            # 结果分析
-│   ├── multiprotgather/        # 项目配置
-│   ├── requirements.txt        # Python依赖
-│   └── Dockerfile             # 后端Docker配置
+│   └── multiprotgather/        # 项目配置
 ├── multiprotgather-frontend/    # React 前端
 │   ├── src/
 │   │   ├── components/         # 通用组件
