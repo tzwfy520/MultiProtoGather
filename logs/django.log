@@ -251,3 +251,225 @@ INFO 2025-09-26 16:09:38,997 consumers 19390 6128644096 发送输入: '\r'
 INFO 2025-09-26 16:09:39,151 consumers 19390 6162296832 SSH输出: '[?2004heccom123@iv-ye38g48em8xjd1vzgucu:/opt$'
 INFO 2025-09-26 16:09:39,214 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:/opt$ \r\n'
 INFO 2025-09-26 16:09:39,214 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:22:31,153 consumers 19390 6128644096 发送输入: 'c'
+INFO 2025-09-26 16:23:01,202 consumers 19390 6128644096 发送输入: 'c'
+INFO 2025-09-26 16:33:25,168 jwt_websocket_middleware 19390 8604131520 WebSocket JWT认证: 用户 admin
+INFO 2025-09-26 16:33:25,170 consumers 19390 8604131520 WebSocket连接已建立，用户: admin, 服务器ID: 13
+INFO 2025-09-26 16:33:25,170 consumers 19390 8604131520 设置连接状态: True
+INFO 2025-09-26 16:33:25,170 consumers 19390 8604131520 正在启动队列处理任务
+INFO 2025-09-26 16:33:25,171 consumers 19390 8604131520 队列处理任务已创建: <Task pending name='Task-76' coro=<SSHTerminalConsumer._process_output_queue() running at /Users/wangfuyu/PythonCode/MultiProtGather/resources/consumers.py:542>>
+INFO 2025-09-26 16:33:25,172 consumers 19390 8604131520 开始处理输出队列
+INFO 2025-09-26 16:33:25,188 consumers 19390 6128644096 正在连接SSH: 115.190.80.219:22
+INFO 2025-09-26 16:33:25,323 transport 19390 6179123200 Connected (version 2.0, client OpenSSH_8.9p1)
+INFO 2025-09-26 16:33:25,797 transport 19390 6179123200 Authentication (password) successful!
+INFO 2025-09-26 16:33:26,040 consumers 19390 6128644096 SSH通道已创建，PTY模式已启用
+INFO 2025-09-26 16:33:26,040 consumers 19390 6128644096 通道状态: active=1, closed=False
+INFO 2025-09-26 16:33:27,046 consumers 19390 8604131520 SSH连接成功: 115.190.80.219
+INFO 2025-09-26 16:33:28,047 consumers 19390 6195949568 SSH输出读取线程开始
+INFO 2025-09-26 16:33:28,048 consumers 19390 6128644096 发送初始命令设置终端环境
+INFO 2025-09-26 16:33:28,049 consumers 19390 6195949568 SSH输出: 'Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-91-generic x86_64)'
+INFO 2025-09-26 16:33:28,049 consumers 19390 6195949568 SSH输出: ''
+INFO 2025-09-26 16:33:28,049 consumers 19390 6195949568 SSH输出: '* Documentation:  https://help.ubuntu.com'
+INFO 2025-09-26 16:33:28,049 consumers 19390 6195949568 SSH输出: '* Management:     https://landscape.canonical.com'
+INFO 2025-09-26 16:33:28,049 consumers 19390 6195949568 SSH输出: '* Support:        https://ubuntu.com/pro'
+INFO 2025-09-26 16:33:28,049 consumers 19390 6195949568 SSH输出: ''
+INFO 2025-09-26 16:33:28,049 consumers 19390 6195949568 SSH输出: 'New release '24.04.3 LTS' available.'
+INFO 2025-09-26 16:33:28,049 consumers 19390 6195949568 SSH输出: 'Run 'do-release-upgrade' to upgrade to it.'
+INFO 2025-09-26 16:33:28,049 consumers 19390 6195949568 SSH输出: ''
+INFO 2025-09-26 16:33:28,049 consumers 19390 6195949568 SSH输出: ''
+INFO 2025-09-26 16:33:28,049 consumers 19390 6195949568 SSH输出: 'Last login: Fri Sep 26 16:08:29 2025 from 101.90.61.156'
+INFO 2025-09-26 16:33:28,105 consumers 19390 8604131520 从队列获取消息: output, 内容: 'Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-91-generic x86_64)\r\n'
+INFO 2025-09-26 16:33:28,105 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,105 consumers 19390 8604131520 从队列获取消息: output, 内容: '\r\n'
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 从队列获取消息: output, 内容: ' * Documentation:  https://help.ubuntu.com\r\n'
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 从队列获取消息: output, 内容: ' * Management:     https://landscape.canonical.com\r\n'
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 从队列获取消息: output, 内容: ' * Support:        https://ubuntu.com/pro\r\n'
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 从队列获取消息: output, 内容: '\r\n'
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 从队列获取消息: output, 内容: "New release '24.04.3 LTS' available.\r\n"
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 从队列获取消息: output, 内容: "Run 'do-release-upgrade' to upgrade to it.\r\n"
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 从队列获取消息: output, 内容: '\r\n'
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 从队列获取消息: output, 内容: '\r\n'
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 从队列获取消息: output, 内容: 'Last login: Fri Sep 26 16:08:29 2025 from 101.90.61.156\r\r\n'
+INFO 2025-09-26 16:33:28,106 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,154 consumers 19390 6195949568 SSH输出: '[?2004h]0;eccom123@iv-ye38g48em8xjd1vzgucu: ~[01;32meccom123@iv-ye38g48em8xjd1vzgucu[00m:[01;34m~[00m$'
+INFO 2025-09-26 16:33:28,207 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004h\x1b]0;eccom123@iv-ye38g48em8xjd1vzgucu: ~\x07\x1b[01;32meccom123@iv-ye38g48em8xjd1vzgucu\x1b[00m:\x1b[01;3'
+INFO 2025-09-26 16:33:28,207 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,671 consumers 19390 6195949568 SSH输出: '[?2004l[?2004h]0;eccom123@iv-ye38g48em8xjd1vzgucu: ~[01;32meccom123@iv-ye38g48em8xjd1vzgucu[00m:[01;34m~[00m$ export TERM=xterm-256color'
+INFO 2025-09-26 16:33:28,713 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004h\x1b]0;eccom123@iv-ye38g48em8xjd1vzgucu: ~\x07\x1b[01;32meccom123@iv-ye38g48em8xjd1vzgucu\x1b[0'
+INFO 2025-09-26 16:33:28,714 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:28,876 consumers 19390 6195949568 SSH输出: '[?2004l[?2004h]0;eccom123@iv-ye38g48em8xjd1vzgucu: ~[01;32meccom123@iv-ye38g48em8xjd1vzgucu[00m:[01;34m~[00m$ export PS1="\u@\h:\w$ "'
+INFO 2025-09-26 16:33:28,917 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004h\x1b]0;eccom123@iv-ye38g48em8xjd1vzgucu: ~\x07\x1b[01;32meccom123@iv-ye38g48em8xjd1vzgucu\x1b[0'
+INFO 2025-09-26 16:33:28,918 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:29,083 consumers 19390 6195949568 SSH输出: '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ echo "Terminal Ready"'
+INFO 2025-09-26 16:33:29,084 consumers 19390 6195949568 SSH输出: '[?2004lTerminal Ready'
+INFO 2025-09-26 16:33:29,120 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ echo "Terminal Ready"\r\n'
+INFO 2025-09-26 16:33:29,120 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:29,120 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\rTerminal Ready\r\n'
+INFO 2025-09-26 16:33:29,120 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:32,805 consumers 19390 6128644096 发送输入: '\r'
+INFO 2025-09-26 16:33:32,924 consumers 19390 6195949568 SSH输出: '[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$'
+INFO 2025-09-26 16:33:32,961 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ \r\n'
+INFO 2025-09-26 16:33:32,961 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:33,689 consumers 19390 6128644096 发送输入: '\r'
+INFO 2025-09-26 16:33:33,756 consumers 19390 6195949568 SSH输出: '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$'
+INFO 2025-09-26 16:33:33,771 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ \r\n'
+INFO 2025-09-26 16:33:33,772 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:34,579 consumers 19390 6128644096 发送输入: '\r'
+INFO 2025-09-26 16:33:34,793 consumers 19390 6195949568 SSH输出: '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$'
+INFO 2025-09-26 16:33:34,882 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ \r\n'
+INFO 2025-09-26 16:33:34,883 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:35,339 consumers 19390 6128644096 发送输入: '\r'
+INFO 2025-09-26 16:33:35,406 consumers 19390 6195949568 SSH输出: '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$'
+INFO 2025-09-26 16:33:35,490 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ \r\n'
+INFO 2025-09-26 16:33:35,491 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:49,846 consumers 19390 6128644096 发送输入: 'c'
+INFO 2025-09-26 16:33:49,928 consumers 19390 6128644096 发送输入: 'd'
+INFO 2025-09-26 16:33:50,105 consumers 19390 6128644096 发送输入: ' '
+INFO 2025-09-26 16:33:50,689 consumers 19390 6128644096 发送输入: '\x7f'
+INFO 2025-09-26 16:33:50,809 consumers 19390 6128644096 发送输入: '\x7f'
+INFO 2025-09-26 16:33:50,935 consumers 19390 6128644096 发送输入: '\x7f'
+INFO 2025-09-26 16:33:51,057 consumers 19390 6128644096 发送输入: '\x7f'
+INFO 2025-09-26 16:33:51,295 consumers 19390 6128644096 发送输入: 'c'
+INFO 2025-09-26 16:33:51,391 consumers 19390 6128644096 发送输入: 'd'
+INFO 2025-09-26 16:33:51,513 consumers 19390 6128644096 发送输入: ' '
+INFO 2025-09-26 16:33:51,671 consumers 19390 6128644096 发送输入: '/'
+INFO 2025-09-26 16:33:52,177 consumers 19390 6128644096 发送输入: 'o'
+INFO 2025-09-26 16:33:52,351 consumers 19390 6128644096 发送输入: 'p'
+INFO 2025-09-26 16:33:52,519 consumers 19390 6128644096 发送输入: 't'
+INFO 2025-09-26 16:33:53,519 consumers 19390 6128644096 发送输入: '\r'
+INFO 2025-09-26 16:33:53,650 consumers 19390 6195949568 SSH输出: '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ cd [K[K[Kcd /opt'
+INFO 2025-09-26 16:33:53,691 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ cd \x08\x1b[K\x08\x1b[K\x08\x1b[K\x07cd /opt\r\n'
+INFO 2025-09-26 16:33:53,691 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:55,370 consumers 19390 6128644096 发送输入: 'l'
+INFO 2025-09-26 16:33:55,619 consumers 19390 6128644096 发送输入: 's'
+INFO 2025-09-26 16:33:55,839 consumers 19390 6128644096 发送输入: '\r'
+INFO 2025-09-26 16:33:55,915 consumers 19390 6195949568 SSH输出: '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:/opt$ ls'
+INFO 2025-09-26 16:33:55,915 consumers 19390 6195949568 SSH输出: '[?2004l[0m[01;34mcontainerd[0m  [01;34mssh-collector[0m  [01;34mSSHCollector[0m'
+INFO 2025-09-26 16:33:55,915 consumers 19390 6195949568 SSH输出: '[01;34mproxima[0m     [01;34msshcollector[0m   [01;34mssh-collector-pro[0m'
+INFO 2025-09-26 16:33:56,016 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:/opt$ ls\r\n'
+INFO 2025-09-26 16:33:56,016 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:56,016 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[0m\x1b[01;34mcontainerd\x1b[0m  \x1b[01;34mssh-collector\x1b[0m  \x1b[01;34mSSHCollector\x1b[0m\r\n'
+INFO 2025-09-26 16:33:56,016 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:33:56,016 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[01;34mproxima\x1b[0m     \x1b[01;34msshcollector\x1b[0m   \x1b[01;34mssh-collector-pro\x1b[0m\r\n'
+INFO 2025-09-26 16:33:56,016 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:36:11,421 consumers 19390 8604131520 WebSocket断开连接: None
+INFO 2025-09-26 16:36:13,443 consumers 19390 6195949568 SSH输出(剩余): '[?2004heccom123@iv-ye38g48em8xjd1vzgucu:/opt$'
+INFO 2025-09-26 16:36:13,444 consumers 19390 6195949568 SSH输出读取线程结束
+INFO 2025-09-26 16:38:35,748 consumers 19390 8604131520 WebSocket断开连接: 1001
+INFO 2025-09-26 16:38:37,839 consumers 19390 6162296832 SSH输出(剩余): '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:/opt$ cc'
+INFO 2025-09-26 16:38:37,839 consumers 19390 6162296832 SSH输出读取线程结束
+INFO 2025-09-26 16:38:39,476 jwt_websocket_middleware 19390 8604131520 WebSocket JWT认证: 用户 admin
+INFO 2025-09-26 16:38:39,477 consumers 19390 8604131520 WebSocket连接已建立，用户: admin, 服务器ID: 13
+INFO 2025-09-26 16:38:39,477 consumers 19390 8604131520 设置连接状态: True
+INFO 2025-09-26 16:38:39,477 consumers 19390 8604131520 正在启动队列处理任务
+INFO 2025-09-26 16:38:39,477 consumers 19390 8604131520 队列处理任务已创建: <Task pending name='Task-107' coro=<SSHTerminalConsumer._process_output_queue() running at /Users/wangfuyu/PythonCode/MultiProtGather/resources/consumers.py:542>>
+INFO 2025-09-26 16:38:39,478 consumers 19390 8604131520 开始处理输出队列
+INFO 2025-09-26 16:38:39,492 consumers 19390 6128644096 正在连接SSH: 115.190.80.219:22
+INFO 2025-09-26 16:38:39,641 transport 19390 6145470464 Connected (version 2.0, client OpenSSH_8.9p1)
+INFO 2025-09-26 16:38:40,525 transport 19390 6145470464 Authentication (password) successful!
+INFO 2025-09-26 16:38:40,862 consumers 19390 6128644096 SSH通道已创建，PTY模式已启用
+INFO 2025-09-26 16:38:40,863 consumers 19390 6128644096 通道状态: active=1, closed=False
+INFO 2025-09-26 16:38:41,868 consumers 19390 8604131520 SSH连接成功: 115.190.80.219
+INFO 2025-09-26 16:38:42,869 consumers 19390 6162296832 SSH输出读取线程开始
+INFO 2025-09-26 16:38:42,869 consumers 19390 6128644096 发送初始命令设置终端环境
+INFO 2025-09-26 16:38:42,870 consumers 19390 6162296832 SSH输出: 'Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-91-generic x86_64)'
+INFO 2025-09-26 16:38:42,870 consumers 19390 6162296832 SSH输出: ''
+INFO 2025-09-26 16:38:42,870 consumers 19390 6162296832 SSH输出: '* Documentation:  https://help.ubuntu.com'
+INFO 2025-09-26 16:38:42,870 consumers 19390 6162296832 SSH输出: '* Management:     https://landscape.canonical.com'
+INFO 2025-09-26 16:38:42,870 consumers 19390 6162296832 SSH输出: '* Support:        https://ubuntu.com/pro'
+INFO 2025-09-26 16:38:42,870 consumers 19390 6162296832 SSH输出: ''
+INFO 2025-09-26 16:38:42,870 consumers 19390 6162296832 SSH输出: 'New release '24.04.3 LTS' available.'
+INFO 2025-09-26 16:38:42,870 consumers 19390 6162296832 SSH输出: 'Run 'do-release-upgrade' to upgrade to it.'
+INFO 2025-09-26 16:38:42,870 consumers 19390 6162296832 SSH输出: ''
+INFO 2025-09-26 16:38:42,870 consumers 19390 6162296832 SSH输出: ''
+INFO 2025-09-26 16:38:42,870 consumers 19390 6162296832 SSH输出: 'Last login: Fri Sep 26 16:33:26 2025 from 101.90.61.156'
+INFO 2025-09-26 16:38:42,912 consumers 19390 8604131520 从队列获取消息: output, 内容: 'Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-91-generic x86_64)\r\n'
+INFO 2025-09-26 16:38:42,912 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:42,912 consumers 19390 8604131520 从队列获取消息: output, 内容: '\r\n'
+INFO 2025-09-26 16:38:42,912 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:42,912 consumers 19390 8604131520 从队列获取消息: output, 内容: ' * Documentation:  https://help.ubuntu.com\r\n'
+INFO 2025-09-26 16:38:42,912 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:42,912 consumers 19390 8604131520 从队列获取消息: output, 内容: ' * Management:     https://landscape.canonical.com\r\n'
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 从队列获取消息: output, 内容: ' * Support:        https://ubuntu.com/pro\r\n'
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 从队列获取消息: output, 内容: '\r\n'
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 从队列获取消息: output, 内容: "New release '24.04.3 LTS' available.\r\n"
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 从队列获取消息: output, 内容: "Run 'do-release-upgrade' to upgrade to it.\r\n"
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 从队列获取消息: output, 内容: '\r\n'
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 从队列获取消息: output, 内容: '\r\n'
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 从队列获取消息: output, 内容: 'Last login: Fri Sep 26 16:33:26 2025 from 101.90.61.156\r\r\n'
+INFO 2025-09-26 16:38:42,913 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:43,080 consumers 19390 6162296832 SSH输出: '[?2004h]0;eccom123@iv-ye38g48em8xjd1vzgucu: ~[01;32meccom123@iv-ye38g48em8xjd1vzgucu[00m:[01;34m~[00m$'
+INFO 2025-09-26 16:38:43,114 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004h\x1b]0;eccom123@iv-ye38g48em8xjd1vzgucu: ~\x07\x1b[01;32meccom123@iv-ye38g48em8xjd1vzgucu\x1b[00m:\x1b[01;3'
+INFO 2025-09-26 16:38:43,114 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:43,707 consumers 19390 6162296832 SSH输出: '[?2004l[?2004h]0;eccom123@iv-ye38g48em8xjd1vzgucu: ~[01;32meccom123@iv-ye38g48em8xjd1vzgucu[00m:[01;34m~[00m$ export TERM=xterm-256color'
+INFO 2025-09-26 16:38:43,720 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004h\x1b]0;eccom123@iv-ye38g48em8xjd1vzgucu: ~\x07\x1b[01;32meccom123@iv-ye38g48em8xjd1vzgucu\x1b[0'
+INFO 2025-09-26 16:38:43,721 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:43,914 consumers 19390 6162296832 SSH输出: '[?2004l[?2004h]0;eccom123@iv-ye38g48em8xjd1vzgucu: ~[01;32meccom123@iv-ye38g48em8xjd1vzgucu[00m:[01;34m~[00m$ export PS1="\u@\h:\w$ "'
+INFO 2025-09-26 16:38:43,915 consumers 19390 6162296832 SSH输出: '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ echo "Terminal Ready"'
+INFO 2025-09-26 16:38:43,915 consumers 19390 6162296832 SSH输出: '[?2004lTerminal Ready'
+INFO 2025-09-26 16:38:43,923 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004h\x1b]0;eccom123@iv-ye38g48em8xjd1vzgucu: ~\x07\x1b[01;32meccom123@iv-ye38g48em8xjd1vzgucu\x1b[0'
+INFO 2025-09-26 16:38:43,924 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:43,924 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ echo "Terminal Ready"\r\n'
+INFO 2025-09-26 16:38:43,924 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:43,924 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\rTerminal Ready\r\n'
+INFO 2025-09-26 16:38:43,924 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:46,396 consumers 19390 6128644096 发送输入: '\r'
+INFO 2025-09-26 16:38:46,505 consumers 19390 6162296832 SSH输出: '[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$'
+INFO 2025-09-26 16:38:46,554 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ \r\n'
+INFO 2025-09-26 16:38:46,554 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:47,586 consumers 19390 6128644096 发送输入: '\r'
+INFO 2025-09-26 16:38:47,643 consumers 19390 6162296832 SSH输出: '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$'
+INFO 2025-09-26 16:38:47,666 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ \r\n'
+INFO 2025-09-26 16:38:47,667 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:47,841 consumers 19390 6128644096 发送输入: '\r'
+INFO 2025-09-26 16:38:47,954 consumers 19390 6162296832 SSH输出: '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$'
+INFO 2025-09-26 16:38:47,970 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ \r\n'
+INFO 2025-09-26 16:38:47,970 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:48,036 consumers 19390 6128644096 发送输入: '\r'
+INFO 2025-09-26 16:38:48,162 consumers 19390 6162296832 SSH输出: '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$'
+INFO 2025-09-26 16:38:48,173 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ \r\n'
+INFO 2025-09-26 16:38:48,173 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:53,947 consumers 19390 6128644096 发送输入: 'c'
+INFO 2025-09-26 16:38:54,021 consumers 19390 6128644096 发送输入: 'd'
+INFO 2025-09-26 16:38:54,160 consumers 19390 6128644096 发送输入: ' '
+INFO 2025-09-26 16:38:54,374 consumers 19390 6128644096 发送输入: '/'
+INFO 2025-09-26 16:38:54,583 consumers 19390 6128644096 发送输入: 'o'
+INFO 2025-09-26 16:38:54,822 consumers 19390 6128644096 发送输入: 'p'
+INFO 2025-09-26 16:38:55,026 consumers 19390 6128644096 发送输入: 't'
+INFO 2025-09-26 16:38:55,460 consumers 19390 6128644096 发送输入: '\r'
+INFO 2025-09-26 16:38:55,528 consumers 19390 6162296832 SSH输出: '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ cd /opt'
+INFO 2025-09-26 16:38:55,560 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:~$ cd /opt\r\n'
+INFO 2025-09-26 16:38:55,561 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:38:58,706 consumers 19390 6128644096 发送输入: 's'
+INFO 2025-09-26 16:38:59,079 consumers 19390 6128644096 发送输入: '\x7f'
+INFO 2025-09-26 16:38:59,584 consumers 19390 6128644096 发送输入: 'l'
+INFO 2025-09-26 16:38:59,700 consumers 19390 6128644096 发送输入: 's'
+INFO 2025-09-26 16:38:59,853 consumers 19390 6128644096 发送输入: '\r'
+INFO 2025-09-26 16:38:59,983 consumers 19390 6162296832 SSH输出: '[?2004l[?2004heccom123@iv-ye38g48em8xjd1vzgucu:/opt$ s[Kls'
+INFO 2025-09-26 16:38:59,984 consumers 19390 6162296832 SSH输出: '[?2004l[0m[01;34mcontainerd[0m  [01;34mssh-collector[0m  [01;34mSSHCollector[0m'
+INFO 2025-09-26 16:38:59,984 consumers 19390 6162296832 SSH输出: '[01;34mproxima[0m     [01;34msshcollector[0m   [01;34mssh-collector-pro[0m'
+INFO 2025-09-26 16:39:00,007 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[?2004heccom123@iv-ye38g48em8xjd1vzgucu:/opt$ s\x08\x1b[Kls\r\n'
+INFO 2025-09-26 16:39:00,008 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:39:00,008 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[?2004l\r\x1b[0m\x1b[01;34mcontainerd\x1b[0m  \x1b[01;34mssh-collector\x1b[0m  \x1b[01;34mSSHCollector\x1b[0m\r\n'
+INFO 2025-09-26 16:39:00,008 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:39:00,008 consumers 19390 8604131520 从队列获取消息: output, 内容: '\x1b[01;34mproxima\x1b[0m     \x1b[01;34msshcollector\x1b[0m   \x1b[01;34mssh-collector-pro\x1b[0m\r\n'
+INFO 2025-09-26 16:39:00,009 consumers 19390 8604131520 输出消息已发送
+INFO 2025-09-26 16:39:03,509 consumers 19390 8604131520 WebSocket断开连接: None
+INFO 2025-09-26 16:39:05,565 consumers 19390 6162296832 SSH输出(剩余): '[?2004heccom123@iv-ye38g48em8xjd1vzgucu:/opt$'
+INFO 2025-09-26 16:39:05,565 consumers 19390 6162296832 SSH输出读取线程结束
